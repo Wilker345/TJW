@@ -1,2 +1,3 @@
 # TJW
-Repositório de atividades da disciplina tópicos de java para web
+
+Código com exemplos construídos em sala;
