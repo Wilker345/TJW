@@ -12,20 +12,19 @@ public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-	
 	private String logradouro;
 	private String numero;
 	private String complemento;
 	private String cep;
 	
 	@OneToOne(mappedBy = "endereco",cascade = CascadeType.ALL)
-	private Lojas loja;
+	private Loja loja;
 		
 
-	public Lojas getLoja() {
+	public Loja getLoja() {
 		return loja;
 	}
-	public void setLoja(Lojas loja) {
+	public void setLoja(Loja loja) {
 		this.loja = loja;
 	}
 	public Long getId() {

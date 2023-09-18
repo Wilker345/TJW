@@ -30,6 +30,9 @@ public class Cliente {
 	private int idade;
 	@OneToMany(mappedBy = "cliente")
 	private List<Telefone> telefones;
+
+	@OneToMany(mappedBy = "cliente")
+	private List<Pedido> pedidos;
 	
 	public Long getId() {
 		return id;
@@ -66,6 +69,14 @@ public class Cliente {
 	}
 	public void setIdade(int idade) {
 		this.idade = idade;
+	}
+
+	public List<Pedido> getPedidos() {
+		return pedidos;
+	}
+
+	public void setPedidos(List<Pedido> pedidos) {
+		this.pedidos = pedidos;
 	}
 
 	public List<Telefone> getTelefones() {

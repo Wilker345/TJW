@@ -1,11 +1,9 @@
 package br.edu.ifce.tjw.repository;
 
+import br.edu.ifce.tjw.model.Item;
 import org.springframework.data.jpa.repository.JpaRepository;
-
-import br.edu.ifce.tjw.model.Cliente;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ClienteRepository  extends JpaRepository<Cliente,Long>{
-
+public interface ItemRepository extends JpaRepository<Item, Long> {
 }
