@@ -20,6 +20,9 @@ public class Item {
         this.valor = valor;
     }
 
+    public Item() {
+    }
+
     public long getId() {
         return id;
     }

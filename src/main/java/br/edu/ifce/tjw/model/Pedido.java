@@ -14,6 +14,9 @@ public class Pedido {
     @OneToMany(mappedBy = "pedido")
     private List<PedidoItem> itens;
 
+    public Pedido() {
+    }
+
     public Pedido(Cliente cliente) {
         this.cliente = cliente;
     }

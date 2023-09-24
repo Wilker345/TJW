@@ -42,6 +42,9 @@ public class Cliente {
 		this.idade = idade;
 	}
 
+	public Cliente() {
+	}
+
 	public Long getId() {
 		return id;
 	}
