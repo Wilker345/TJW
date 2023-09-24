@@ -12,8 +12,13 @@ public class Item {
     private String nome;
     // em centavos
     private int valor;
-    @ManyToMany(mappedBy = "itens")
-    private List<Pedido> pedidos;
+    @OneToMany(mappedBy = "item")
+    private List<PedidoItem> pedidos;
+
+    public Item(String nome, int valor) {
+        this.nome = nome;
+        this.valor = valor;
+    }
 
     public long getId() {
         return id;
@@ -35,11 +40,11 @@ public class Item {
         this.valor = valor;
     }
 
-    public List<Pedido> getPedidos() {
+    public List<PedidoItem> getPedidos() {
         return pedidos;
     }
 
-    public void setPedidos(List<Pedido> pedidos) {
+    public void setPedidos(List<PedidoItem> pedidos) {
         this.pedidos = pedidos;
     }
 }

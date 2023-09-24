@@ -19,7 +19,13 @@ public class Endereco {
 	
 	@OneToOne(mappedBy = "endereco",cascade = CascadeType.ALL)
 	private Loja loja;
-		
+
+	public Endereco(String logradouro, String numero, String complemento, String cep) {
+		this.logradouro = logradouro;
+		this.numero = numero;
+		this.complemento = complemento;
+		this.cep = cep;
+	}
 
 	public Loja getLoja() {
 		return loja;

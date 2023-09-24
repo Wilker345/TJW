@@ -33,7 +33,15 @@ public class Cliente {
 
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos;
-	
+
+	public Cliente(String nome, String cpf, Date dtCadastro, Date dtNascimento, int idade) {
+		this.nome = nome;
+		this.cpf = cpf;
+		this.dtCadastro = dtCadastro;
+		this.dtNascimento = dtNascimento;
+		this.idade = idade;
+	}
+
 	public Long getId() {
 		return id;
 	}

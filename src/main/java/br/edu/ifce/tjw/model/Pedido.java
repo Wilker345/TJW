@@ -11,13 +11,12 @@ public class Pedido {
     private long id;
     @ManyToOne
     private Cliente cliente;
-    @ManyToMany
-    @JoinTable(
-            name="pedido_item",
-            joinColumns = @JoinColumn(name="pedido_id"),
-            inverseJoinColumns = @JoinColumn(name="item_id")
-    )
-    private List<Item> itens;
+    @OneToMany(mappedBy = "pedido")
+    private List<PedidoItem> itens;
+
+    public Pedido(Cliente cliente) {
+        this.cliente = cliente;
+    }
 
     public long getId() {
         return id;
@@ -31,11 +30,12 @@ public class Pedido {
         this.cliente = cliente;
     }
 
-    public List<Item> getItens() {
+    public List<PedidoItem> getItens() {
         return itens;
     }
 
-    public void setItens(List<Item> itens) {
+    public void setItens(List<PedidoItem> itens) {
         this.itens = itens;
     }
+
 }
