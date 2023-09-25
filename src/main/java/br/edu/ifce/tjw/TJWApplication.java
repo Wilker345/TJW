@@ -21,9 +21,6 @@ public class TJWApplication implements CommandLineRunner {
 	
 	@Autowired
 	private LojaRepository lojaRepository;
-	
-	@Autowired
-	private EnderecoRepository enderecoRepository;
 
 	@Autowired
 	private ItemRepository itemRepository;
@@ -38,22 +35,29 @@ public class TJWApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... args) throws Exception {
+
+		EnderecoLoja enderecoLoja = new EnderecoLoja("Rua tal",
+				"123", "e tal", "2912824");
+		Loja loja = new Loja("Loja 1", enderecoLoja);
+		lojaRepository.save(loja);
+
 		Date cadastro = new Date();
 		Date nascimento = new Date(2002, Calendar.MAY, 27);
 		Cliente cliente = new Cliente("Carlos", "123456789-12",
 				cadastro, nascimento, 21);
-
-		Endereco endereco = new Endereco("rua tal", "1234",
-				"e tal", "23838139");
-
+		EnderecoCliente enderecoEntrega = new EnderecoCliente("Rua A", "452",
+				"antes de BC", "379123", true, cliente);
+		EnderecoCliente enderecoAlternativo = new EnderecoCliente("Rua BC", "462",
+				"apos A", "379125", false, cliente);
+		List<EnderecoCliente> enderecosCliente = List.of(enderecoEntrega, enderecoAlternativo);
+		cliente.setEnderecos(enderecosCliente);
 		clienteRepository.save(cliente);
-		// itens
+
 		Item lapis = new Item("lapis", 200);
 		Item borracha = new Item("borracha", 250);
 		List<Item> itens = List.of(lapis, borracha);
 		itemRepository.saveAll(itens);
 
-		// pedido
 		Pedido pedido = new Pedido(cliente);
 		pedidoRepository.save(pedido);
 
@@ -61,9 +65,6 @@ public class TJWApplication implements CommandLineRunner {
 		PedidoItem pedidoBorracha = new PedidoItem(pedido, borracha, 1);
 		List<PedidoItem> itensDoPedido = List.of(pedidoLapis, pedidoBorracha);
 		pedidoItemRepository.saveAll(itensDoPedido);
-
-		pedido.setItens(itensDoPedido);
-		pedidoRepository.save(pedido);
 
 	}
 

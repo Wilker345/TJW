@@ -1,13 +1,8 @@
 package br.edu.ifce.tjw.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
-@Entity
+@MappedSuperclass
 public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,9 +11,6 @@ public class Endereco {
 	private String numero;
 	private String complemento;
 	private String cep;
-	
-	@OneToOne(mappedBy = "endereco",cascade = CascadeType.ALL)
-	private Loja loja;
 
 	public Endereco(String logradouro, String numero, String complemento, String cep) {
 		this.logradouro = logradouro;
@@ -27,12 +19,10 @@ public class Endereco {
 		this.cep = cep;
 	}
 
-	public Loja getLoja() {
-		return loja;
+	public Endereco() {
+
 	}
-	public void setLoja(Loja loja) {
-		this.loja = loja;
-	}
+
 	public Long getId() {
 		return id;
 	}

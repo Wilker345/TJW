@@ -3,14 +3,8 @@ package br.edu.ifce.tjw.model;
 import java.util.Date;
 import java.util.List;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
-import jakarta.persistence.Transient;
+import jakarta.persistence.*;
+
 /**
  * @author cjunior
  *
@@ -33,6 +27,9 @@ public class Cliente {
 
 	@OneToMany(mappedBy = "cliente")
 	private List<Pedido> pedidos;
+
+	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	private List<EnderecoCliente> enderecos;
 
 	public Cliente(String nome, String cpf, Date dtCadastro, Date dtNascimento, int idade) {
 		this.nome = nome;
@@ -96,6 +93,12 @@ public class Cliente {
 	public void setTelefones(List<Telefone> telefones) {
 		this.telefones = telefones;
 	}
-	
-	
+
+	public List<EnderecoCliente> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<EnderecoCliente> enderecos) {
+		this.enderecos = enderecos;
+	}
 }

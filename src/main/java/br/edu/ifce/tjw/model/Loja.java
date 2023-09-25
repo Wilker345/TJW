@@ -14,7 +14,7 @@ public class Loja {
 	private Long id;
 	private String unidade;
 	@OneToOne(cascade = CascadeType.ALL)
-	private Endereco endereco;
+	private EnderecoLoja endereco;
 	public Long getId() {
 		return id;
 	}
@@ -30,11 +30,14 @@ public class Loja {
 	public Endereco getEndereco() {
 		return endereco;
 	}
-	public void setEndereco(Endereco endereco) {
+	public void setEndereco(EnderecoLoja endereco) {
 		this.endereco = endereco;
 	}
-	
-	
-	
 
+	public Loja() {
+	}
+	public Loja(String unidade, EnderecoLoja endereco) {
+		this.unidade = unidade;
+		this.endereco = endereco;
+	}
 }
