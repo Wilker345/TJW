@@ -17,9 +17,9 @@ public class Cliente {
 	private String nome;
 	private String cpf;
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date dtCadastro;
+	private Date dataCadastro;
 	@Temporal(TemporalType.DATE)
-	private Date dtNascimento;
+	private Date dataNascimento;
 	@Transient
 	private int idade;
 	@OneToMany(mappedBy = "cliente")
@@ -31,11 +31,11 @@ public class Cliente {
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
 	private List<EnderecoCliente> enderecos;
 
-	public Cliente(String nome, String cpf, Date dtCadastro, Date dtNascimento, int idade) {
+	public Cliente(String nome, String cpf, Date dataCadastro, Date dataNascimento, int idade) {
 		this.nome = nome;
 		this.cpf = cpf;
-		this.dtCadastro = dtCadastro;
-		this.dtNascimento = dtNascimento;
+		this.dataCadastro = dataCadastro;
+		this.dataNascimento = dataNascimento;
 		this.idade = idade;
 	}
 
@@ -60,17 +60,17 @@ public class Cliente {
 	public void setCpf(String cpf) {
 		this.cpf = cpf;
 	}
-	public Date getDtCadastro() {
-		return dtCadastro;
+	public Date getDataCadastro() {
+		return dataCadastro;
 	}
-	public void setDtCadastro(Date dtCadastro) {
-		this.dtCadastro = dtCadastro;
+	public void setDataCadastro(Date dataCadastro) {
+		this.dataCadastro = dataCadastro;
 	}
-	public Date getDtNascimento() {
-		return dtNascimento;
+	public Date getDataNascimento() {
+		return dataNascimento;
 	}
-	public void setDtNascimento(Date dtNascimento) {
-		this.dtNascimento = dtNascimento;
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
 	}
 	public int getIdade() {
 		return idade;

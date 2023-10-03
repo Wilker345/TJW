@@ -42,16 +42,7 @@ public class TJWApplication implements CommandLineRunner {
 		Loja loja = new Loja("Loja 1", enderecoLoja);
 		lojaRepository.save(loja);
 
-		Date cadastro = new Date();
-		Date nascimento = new Date(2002, Calendar.MAY, 27);
-		Cliente cliente = new Cliente("Carlos", "123456789-12",
-				cadastro, nascimento, 21);
-		EnderecoCliente enderecoEntrega = new EnderecoCliente("Rua A", "452",
-				"antes de BC", "379123", true, cliente);
-		EnderecoCliente enderecoAlternativo = new EnderecoCliente("Rua BC", "462",
-				"apos A", "379125", false, cliente);
-		List<EnderecoCliente> enderecosCliente = List.of(enderecoEntrega, enderecoAlternativo);
-		cliente.setEnderecos(enderecosCliente);
+		Cliente cliente = createCliente();
 		clienteRepository.save(cliente);
 
 		Item lapis = new Item("lapis", new BigDecimal("2"));
@@ -67,6 +58,25 @@ public class TJWApplication implements CommandLineRunner {
 		List<PedidoItem> itensDoPedido = List.of(pedidoLapis, pedidoBorracha);
 		pedidoItemRepository.saveAll(itensDoPedido);
 
+	}
+
+	private static Cliente createCliente() {
+		Calendar calendar = Calendar.getInstance();
+		Date cadastro = calendar.getTime();
+		calendar.set(2002, Calendar.MAY, 27);
+		Date nascimento = calendar.getTime();
+
+		Cliente cliente = new Cliente("Carlos", "123456789-12",
+				cadastro, nascimento, 21);
+
+		EnderecoCliente enderecoEntrega = new EnderecoCliente("Rua A", "452",
+				"antes de BC", "379123", true, cliente);
+		EnderecoCliente enderecoAlternativo = new EnderecoCliente("Rua BC", "462",
+				"apos A", "379125", false, cliente);
+		List<EnderecoCliente> enderecosCliente = List.of(enderecoEntrega, enderecoAlternativo);
+		cliente.setEnderecos(enderecosCliente);
+
+		return cliente;
 	}
 
 }
