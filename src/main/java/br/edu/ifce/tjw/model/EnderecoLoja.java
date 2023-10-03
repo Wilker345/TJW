@@ -1,11 +1,12 @@
 package br.edu.ifce.tjw.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class EnderecoLoja extends Endereco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     @OneToOne(mappedBy = "endereco")
     private Loja loja;
 

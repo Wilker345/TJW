@@ -2,6 +2,7 @@ package br.edu.ifce.tjw.model;
 
 import jakarta.persistence.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 @Entity
@@ -11,11 +12,11 @@ public class Item {
     private long id;
     private String nome;
     // em centavos
-    private int valor;
+    private BigDecimal valor;
     @OneToMany(mappedBy = "item")
     private List<PedidoItem> pedidos;
 
-    public Item(String nome, int valor) {
+    public Item(String nome, BigDecimal valor) {
         this.nome = nome;
         this.valor = valor;
     }
@@ -35,11 +36,11 @@ public class Item {
         this.nome = nome;
     }
 
-    public int getValor() {
+    public BigDecimal getValor() {
         return valor;
     }
 
-    public void setValor(int valor) {
+    public void setValor(BigDecimal valor) {
         this.valor = valor;
     }
 

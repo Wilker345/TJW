@@ -7,6 +7,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import java.math.BigDecimal;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -53,8 +54,8 @@ public class TJWApplication implements CommandLineRunner {
 		cliente.setEnderecos(enderecosCliente);
 		clienteRepository.save(cliente);
 
-		Item lapis = new Item("lapis", 200);
-		Item borracha = new Item("borracha", 250);
+		Item lapis = new Item("lapis", new BigDecimal("2"));
+		Item borracha = new Item("borracha", new BigDecimal("2.5"));
 		List<Item> itens = List.of(lapis, borracha);
 		itemRepository.saveAll(itens);
 

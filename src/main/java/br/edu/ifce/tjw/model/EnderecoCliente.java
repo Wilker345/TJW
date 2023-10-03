@@ -1,10 +1,12 @@
 package br.edu.ifce.tjw.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class EnderecoCliente extends Endereco {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private long id;
     private boolean ehEnderecoDeEntrega;
     @ManyToOne
     private Cliente cliente;
