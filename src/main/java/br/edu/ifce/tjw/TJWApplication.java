@@ -2,6 +2,7 @@ package br.edu.ifce.tjw;
 
 import br.edu.ifce.tjw.model.*;
 import br.edu.ifce.tjw.repository.*;
+import br.edu.ifce.tjw.service.implementations.RelationalClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -12,14 +13,9 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
+
 @SpringBootApplication
 public class TJWApplication implements CommandLineRunner {
-	@Autowired
-	private UsuarioRepository usuarioRepository;
-	
-	@Autowired
-	private ClienteRepository clienteRepository;
-	
 	@Autowired
 	private LojaRepository lojaRepository;
 
@@ -29,7 +25,11 @@ public class TJWApplication implements CommandLineRunner {
 	@Autowired
 	private PedidoRepository pedidoRepository;
 
-	@Autowired PedidoItemRepository pedidoItemRepository;
+	@Autowired
+	private PedidoItemRepository pedidoItemRepository;
+
+	@Autowired private RelationalClienteService clienteService;
+
 	public static void main(String[] args) {
 		SpringApplication.run(TJWApplication.class, args);
 	}
@@ -43,7 +43,7 @@ public class TJWApplication implements CommandLineRunner {
 		lojaRepository.save(loja);
 
 		Cliente cliente = createCliente();
-		clienteRepository.save(cliente);
+		clienteService.postCliente(cliente);
 
 		Item lapis = new Item("lapis", new BigDecimal("2"));
 		Item borracha = new Item("borracha", new BigDecimal("2.5"));
