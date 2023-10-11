@@ -44,6 +44,7 @@ public class TJWApplication implements CommandLineRunner {
 
 		Cliente cliente = createCliente();
 		clienteService.postCliente(cliente);
+		clienteService.updateCpf("11111111");
 
 		Item lapis = new Item("lapis", new BigDecimal("2"));
 		Item borracha = new Item("borracha", new BigDecimal("2.5"));
