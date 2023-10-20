@@ -1,7 +1,9 @@
 package br.edu.ifce.tjw.service.implementations;
 
 import br.edu.ifce.tjw.model.Cliente;
-import br.edu.ifce.tjw.repository.ClienteRepository;
+import br.edu.ifce.tjw.model.dto.cliente.ClienteDTO;
+import br.edu.ifce.tjw.model.mapper.cliente.ClienteMapper;
+import br.edu.ifce.tjw.repository.interfaces.ClienteRepository;
 import br.edu.ifce.tjw.service.interfaces.ClienteService;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
@@ -14,16 +16,20 @@ import java.util.List;
 @Service
 public class RelationalClienteService implements ClienteService {
     private final ClienteRepository clienteRepository;
+    private final ClienteMapper clienteMapper;
     @Autowired
-    public RelationalClienteService(ClienteRepository clienteRepository) {
+    public RelationalClienteService(ClienteRepository clienteRepository, ClienteMapper clienteMapper) {
         this.clienteRepository = clienteRepository;
+        this.clienteMapper = clienteMapper;
     }
 
     public List<Cliente> getAllClientes() {
         return clienteRepository.findAll();
     }
-    public Cliente getCliente(long id) throws EntityNotFoundException {
-        return clienteRepository.getReferenceById(id);
+    public ClienteDTO getCliente(long id) throws EntityNotFoundException {
+        Cliente cliente = clienteRepository.getReferenceById(id);
+        System.out.println(cliente);
+        return clienteMapper.toDTO(cliente);
     }
     public Cliente postCliente(Cliente cliente){
         clienteRepository.save(cliente);

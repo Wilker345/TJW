@@ -1,5 +1,6 @@
 package br.edu.ifce.tjw.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 
 import java.util.List;
@@ -10,6 +11,7 @@ public class Pedido {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
     @ManyToOne
+    @JsonBackReference
     private Cliente cliente;
     @OneToMany(mappedBy = "pedido")
     private List<PedidoItem> itens;

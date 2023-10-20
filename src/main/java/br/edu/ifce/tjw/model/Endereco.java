@@ -2,7 +2,8 @@ package br.edu.ifce.tjw.model;
 
 import jakarta.persistence.*;
 
-@Inheritance(strategy = InheritanceType.TABLE_PER_CLASS)
+@Entity
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Endereco {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)

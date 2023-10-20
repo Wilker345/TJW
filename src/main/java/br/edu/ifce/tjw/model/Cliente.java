@@ -3,6 +3,8 @@ package br.edu.ifce.tjw.model;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 /**
@@ -23,12 +25,15 @@ public class Cliente {
 	@Transient
 	private int idade;
 	@OneToMany(mappedBy = "cliente")
+	@JsonManagedReference
 	private List<Telefone> telefones;
 
 	@OneToMany(mappedBy = "cliente")
+	@JsonManagedReference
 	private List<Pedido> pedidos;
 
 	@OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+	@JsonManagedReference
 	private List<EnderecoCliente> enderecos;
 
 	public Cliente(String nome, String cpf, Date dataCadastro, Date dataNascimento, int idade) {
@@ -44,9 +49,6 @@ public class Cliente {
 
 	public Long getId() {
 		return id;
-	}
-	public void setId(Long id) {
-		this.id = id;
 	}
 	public String getNome() {
 		return nome;

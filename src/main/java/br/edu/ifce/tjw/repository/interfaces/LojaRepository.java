@@ -1,4 +1,4 @@
-package br.edu.ifce.tjw.repository;
+package br.edu.ifce.tjw.repository.interfaces;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

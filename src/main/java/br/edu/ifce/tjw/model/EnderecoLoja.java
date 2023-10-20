@@ -3,6 +3,7 @@ package br.edu.ifce.tjw.model;
 import jakarta.persistence.*;
 
 @Entity
+@PrimaryKeyJoinColumn(name = "id")
 public class EnderecoLoja extends Endereco {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -1,5 +1,7 @@
 package br.edu.ifce.tjw.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -13,8 +15,8 @@ public class Telefone {
 	private String numero;
 	private Boolean principal;
 	private Boolean isWpp;
-	
 	@ManyToOne
+	@JsonBackReference
 	private Cliente cliente;
 	
 	public String getNumero() {

@@ -1,7 +1,10 @@
 package br.edu.ifce.tjw;
 
 import br.edu.ifce.tjw.model.*;
-import br.edu.ifce.tjw.repository.*;
+import br.edu.ifce.tjw.repository.interfaces.ItemRepository;
+import br.edu.ifce.tjw.repository.interfaces.LojaRepository;
+import br.edu.ifce.tjw.repository.interfaces.PedidoItemRepository;
+import br.edu.ifce.tjw.repository.interfaces.PedidoRepository;
 import br.edu.ifce.tjw.service.implementations.RelationalClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
