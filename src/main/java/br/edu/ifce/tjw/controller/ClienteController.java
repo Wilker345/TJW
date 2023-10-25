@@ -1,5 +1,6 @@
 package br.edu.ifce.tjw.controller;
 
+import br.edu.ifce.tjw.controller.exception.TupleNotFoundException;
 import br.edu.ifce.tjw.model.Cliente;
 import br.edu.ifce.tjw.model.dto.cliente.ClienteDTO;
 import br.edu.ifce.tjw.service.implementations.RelationalClienteService;
@@ -25,7 +26,7 @@ public class ClienteController {
         return clienteService.getAllClientes();
     }
     @GetMapping("/{id}")
-    public ClienteDTO getById(@PathVariable long id) {
+    public ClienteDTO getById(@PathVariable long id) throws TupleNotFoundException {
         return clienteService.getCliente(id);
     }
 }
